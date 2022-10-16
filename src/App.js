@@ -1,7 +1,10 @@
+import { Routes, Route } from "react-router-dom";
 import styled from "@emotion/styled";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/home-page";
 import LandingPage from "./pages/lading-page";
+import { useBuildings } from "./context/buildings-context";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   height: 100vh;
@@ -33,11 +36,22 @@ const testList = [
 ];
 
 function App() {
+  console.log(useBuildings());
+  const { buildings } = useBuildings();
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    setList(buildings);
+  }, [buildings]);
   return (
     <Container>
       <Navbar />
-      {/* <LandingPage /> */}
-      <HomePage list={testList} />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage list={list} />} />
+        <Route path="/create" element={<HomePage />} />
+        <Route path="*" element={<h1>Not found</h1>} />
+      </Routes>
     </Container>
   );
 }

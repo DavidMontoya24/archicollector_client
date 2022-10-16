@@ -19,6 +19,7 @@ const Image = styled.div`
   & img {
     border-radius: 1.5rem 1.5rem 0 0;
     height: 100%;
+    width: 100%;
     object-fit: cover;
   }
 `;
@@ -42,13 +43,11 @@ const Desc = styled.div`
 const DescContent = styled.div`
   width: 50%;
   & h4 {
-    /* ${typography.headline[6]} */
     margin: 0;
   }
   & h5 {
     margin: 0;
     font-weight: 300;
-    /* ${typography.body[1]} */
   }
 `;
 

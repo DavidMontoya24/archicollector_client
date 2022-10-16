@@ -8,12 +8,22 @@ const Wrapper = styled.div`
   gap: 3rem;
 `;
 
+const AddBtn = styled.div`
+  width: 18.75rem;
+  height: 22rem;
+  border: 1px solid white;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+`;
+
 function HomePage({ list }) {
   return (
     <Wrapper>
       {list.map((elm) => (
-        <HomeCard element={elm} />
+        <HomeCard element={elm} key={elm.id} />
       ))}
+      <AddBtn></AddBtn>
     </Wrapper>
   );
 }
