@@ -12,7 +12,7 @@ function HomePage({ list }) {
   return (
     <Wrapper>
       {list.map((elm) => (
-        <HomeCard>{elm}</HomeCard>
+        <HomeCard element={elm} />
       ))}
     </Wrapper>
   );
