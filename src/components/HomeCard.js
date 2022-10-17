@@ -16,6 +16,7 @@ const Card = styled.div`
 const Image = styled.div`
   height: 80%;
   width: 100%;
+  filter: brightness(0.7);
   & img {
     border-radius: 1.5rem 1.5rem 0 0;
     height: 100%;
@@ -31,6 +32,7 @@ const Title = styled.div`
   padding: 0.5rem;
   line-height: 2.5rem;
   font-weight: 500;
+  z-index: 1;
 `;
 
 const Desc = styled.div`

@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "../styles";
+import { AiFillHome } from "react-icons/ai";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -7,10 +9,9 @@ const Container = styled.div`
   border-radius: 3rem;
   background-color: ${colors.darker};
   color: ${colors.white};
+  margin: 2rem 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-top: 2rem;
   /* filter: blur(2px); */
   /* backdrop-filter: blur(10px); */
   /* filter: blur(2px); */
@@ -18,17 +19,25 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  color: red;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* color: red;
   opacity: 1;
-  filter: blur(0px);
+  filter: blur(0px); */
 `;
 
 export default function Navbar() {
   return (
     <Container>
-      <div>
+      <Content>
+        <NavLink to="/home">
+          <AiFillHome color="white" size="2rem" />
+        </NavLink>
         <h1>ArchiCollector</h1>
-      </div>
+      </Content>
     </Container>
   );
 }
