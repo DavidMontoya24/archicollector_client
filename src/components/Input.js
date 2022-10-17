@@ -56,6 +56,7 @@ function Input({
   width,
   leftIcon,
   isTxtArea,
+  defaultValue,
 }) {
   return (
     <div>
@@ -70,9 +71,16 @@ function Input({
             placeholder={placeholder}
             value={value}
             onChange={onChange}
+            defaultValue={defaultValue}
           />
         )}
-        {isTxtArea && <TxtArea name={name} placeholder={placeholder}></TxtArea>}
+        {isTxtArea && (
+          <TxtArea
+            name={name}
+            placeholder={placeholder}
+            value={value}
+          ></TxtArea>
+        )}
       </StyledInputContainer>
     </div>
   );

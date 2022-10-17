@@ -5,6 +5,7 @@ import HomePage from "./pages/home-page";
 import LandingPage from "./pages/lading-page";
 import ShowPage from "./pages/show-page";
 import CreatePage from "./pages/create-page";
+import EditPage from "./pages/edit-page";
 
 const Container = styled.div`
   height: 100vh;
@@ -32,7 +33,7 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/home/:id" element={<ShowPage />} />
-        <Route path="/edit/:id" element={<h1>Edit!!</h1>} />
+        <Route path="/edit/:id" element={<EditPage />} />
         <Route path="*" element={<h1>Not found</h1>} />
       </Routes>
     </Container>

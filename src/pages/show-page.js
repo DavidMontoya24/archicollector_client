@@ -50,6 +50,16 @@ const Content2 = styled.div`
 const Content3 = styled.div`
   color: white;
   background-color: blue;
+  display: flex;
+`;
+
+const Image2 = styled.div`
+  width: 50%;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const Content4 = styled.div`
@@ -90,6 +100,7 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
+  gap: 0.5rem;
   width: fit-content;
   background-color: ${colors.red};
   cursor: pointer;
@@ -136,7 +147,14 @@ function ShowPage() {
           <img src={building.image} alt="main_img" />
         </MainImage>
         <Content2></Content2>
-        <Content3>more fotos</Content3>
+        <Content3>
+          <Image2>
+            <img src={building.image} alt="main_img" />
+          </Image2>
+          <Image2>
+            <img src={building.image} alt="main_img" />
+          </Image2>
+        </Content3>
         <Content4>
           <div>
             <h4>Author</h4>
