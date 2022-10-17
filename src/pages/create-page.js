@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 import Button from "../components/Button";
 import Input from "../components/Input";
+import { createBuilding } from "../services/buildings_service";
 import { colors, typography } from "../styles";
+import { Navigate } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div`
   padding: 2rem 4rem;
@@ -23,14 +26,27 @@ const Title = styled.div`
 `;
 
 function CreatePage() {
+  const [newCreated, setNewCreated] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.elements);
-    console.log("name", e.target.elements.name.value);
+    const { name, year, author, location, description } = e.target.elements;
+    const data = {
+      name: name.value,
+      year: year.value,
+      author: author.value,
+      location: location.value,
+    };
+    console.log("sending data:", data);
+    createBuilding(data)
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+    setNewCreated(true);
   };
 
   return (
     <Container>
+      {newCreated && <Navigate to="/home" replace={true} />}
       <Form onSubmit={handleSubmit}>
         <Title>Create your building</Title>
         <Input

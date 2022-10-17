@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/home-page";
 import LandingPage from "./pages/lading-page";
-import { useBuildings } from "./context/buildings-context";
-import { useEffect, useState } from "react";
 import ShowPage from "./pages/show-page";
 import CreatePage from "./pages/create-page";
 
@@ -26,18 +24,12 @@ const test = {
 };
 
 function App() {
-  const { buildings } = useBuildings();
-  const [list, setList] = useState([]);
-
-  useEffect(() => {
-    setList(buildings);
-  }, [buildings]);
   return (
     <Container>
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<HomePage list={list} />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/create" element={<CreatePage />} />
         <Route path="/home/:id" element={<ShowPage />} />
         <Route path="/edit/:id" element={<h1>Edit!!</h1>} />

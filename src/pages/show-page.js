@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import { colors } from "../styles";
 import { NavLink, useParams } from "react-router-dom";
-import { useBuildings } from "../context/buildings-context";
 import { useEffect, useState } from "react";
-import { showBuilding } from "../services/buildings_service";
+import { deleteProperty, showBuilding } from "../services/buildings_service";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { Navigate } from "react-router-dom";
 
 const Container = styled.div`
   padding: 2rem 4rem;
@@ -92,10 +92,12 @@ const Btn = styled.div`
   border-radius: 0.5rem;
   width: fit-content;
   background-color: ${colors.red};
+  cursor: pointer;
 `;
 
 function ShowPage() {
   const [building, setBuilding] = useState("");
+  const [goHome, setGoHome] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -106,6 +108,13 @@ function ShowPage() {
       .catch(console.log);
   }, []);
 
+  const handleDelete = () => {
+    deleteProperty(id)
+      .then((data) => console.log(data))
+      .catch(console.log);
+    setGoHome(true);
+  };
+
   return (
     <Container>
       <Header id="header">
@@ -115,8 +124,9 @@ function ShowPage() {
             <Btn>
               <MdEdit color="white" size="1.5rem" /> EDIT
             </Btn>
+            {goHome && <Navigate to="/home" replace={true} />}
           </StyledNavLink>
-          <Btn>
+          <Btn onClick={handleDelete}>
             <MdDelete color="white" size="1.5rem" /> DELETE
           </Btn>
         </BtnWrapper>

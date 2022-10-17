@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 import HomeCard from "../components/HomeCard";
 import { NavLink } from "react-router-dom";
 import { colors } from "../styles";
+import { useBuildings } from "../context/buildings-context";
+import { useEffect, useState } from "react";
+import { getBuildings } from "../services/buildings_service";
 
 const Wrapper = styled.div`
   padding: 3rem;
@@ -24,7 +27,16 @@ const StyledNavLink = styled(NavLink)`
   color: ${colors.white};
 `;
 
-function HomePage({ list }) {
+function HomePage() {
+  const { buildings } = useBuildings();
+  const [list, setList] = useState(buildings);
+
+  useEffect(() => {
+    getBuildings().then((data) => {
+      setList(data);
+    });
+  }, [buildings]);
+
   return (
     <Wrapper>
       {list.map((elm) => (

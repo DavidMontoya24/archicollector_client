@@ -9,7 +9,6 @@ function BuildingsProvider({ children }) {
   useEffect(() => {
     getBuildings()
       .then((data) => {
-        console.log(data);
         return setBuildings(data);
       })
       .catch((err) => console.error(err));
