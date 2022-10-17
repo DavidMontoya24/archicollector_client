@@ -6,6 +6,7 @@ import LandingPage from "./pages/lading-page";
 import { useBuildings } from "./context/buildings-context";
 import { useEffect, useState } from "react";
 import ShowPage from "./pages/show-page";
+import CreatePage from "./pages/create-page";
 
 const Container = styled.div`
   height: 100vh;
@@ -37,8 +38,9 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage list={list} />} />
-        <Route path="/create" element={<HomePage />} />
+        <Route path="/create" element={<CreatePage />} />
         <Route path="/home/:id" element={<ShowPage />} />
+        <Route path="/edit/:id" element={<h1>Edit!!</h1>} />
         <Route path="*" element={<h1>Not found</h1>} />
       </Routes>
     </Container>

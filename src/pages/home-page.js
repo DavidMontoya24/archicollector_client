@@ -32,7 +32,9 @@ function HomePage({ list }) {
           <HomeCard element={elm} key={elm.id} />
         </StyledNavLink>
       ))}
-      <AddBtn></AddBtn>
+      <StyledNavLink to="/create">
+        <AddBtn></AddBtn>
+      </StyledNavLink>
     </Wrapper>
   );
 }

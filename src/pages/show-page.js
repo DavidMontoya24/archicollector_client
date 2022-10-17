@@ -80,7 +80,6 @@ function ShowPage() {
         setBuilding(data);
       })
       .catch(console.log);
-    console.log("Selected", building);
   }, []);
 
   return (
