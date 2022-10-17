@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 import { colors } from "../styles";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useBuildings } from "../context/buildings-context";
 import { useEffect, useState } from "react";
 import { showBuilding } from "../services/buildings_service";
+import { MdEdit, MdDelete } from "react-icons/md";
 
 const Container = styled.div`
   padding: 2rem 4rem;
@@ -22,6 +23,9 @@ const Header = styled.div`
   max-height: 5rem;
   color: ${colors.white};
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   & p {
     font-size: 4rem;
     font-weight: 500;
@@ -70,6 +74,26 @@ const Content4 = styled.div`
   }
 `;
 
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: ${colors.white};
+`;
+
+const BtnWrapper = styled.div`
+  display: flex;
+  gap: 0.75rem;
+`;
+
+const Btn = styled.div`
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  width: fit-content;
+  background-color: ${colors.red};
+`;
+
 function ShowPage() {
   const [building, setBuilding] = useState("");
   const { id } = useParams();
@@ -84,8 +108,18 @@ function ShowPage() {
 
   return (
     <Container>
-      <Header>
+      <Header id="header">
         <p>{building.name}</p>
+        <BtnWrapper>
+          <StyledNavLink to={`/edit/${id}`}>
+            <Btn>
+              <MdEdit color="white" size="1.5rem" /> EDIT
+            </Btn>
+          </StyledNavLink>
+          <Btn>
+            <MdDelete color="white" size="1.5rem" /> DELETE
+          </Btn>
+        </BtnWrapper>
       </Header>
       <Wrapper>
         <MainImage>

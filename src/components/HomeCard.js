@@ -67,8 +67,8 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  height: 4rem;
-  width: 4rem;
+  height: 2rem;
+  width: 2rem;
   background-color: ${colors.red};
 `;
 
@@ -87,11 +87,11 @@ export default function HomeCard({ element }) {
         </DescContent>
       </Desc>
       <BtnWrapper>
-        <NavLink to={`/edit/${element.id}`}>
+        {/* <NavLink to={`/edit/${element.id}`}>
           <Btn>
-            <MdEdit color="white" size="2.5rem" />{" "}
+            <MdEdit color="white" size="1.5rem" />{" "}
           </Btn>
-        </NavLink>
+        </NavLink> */}
       </BtnWrapper>
     </Card>
   );
