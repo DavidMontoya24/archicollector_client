@@ -5,6 +5,7 @@ import { colors } from "../styles";
 import { useBuildings } from "../context/buildings-context";
 import { useEffect, useState } from "react";
 import { getBuildings } from "../services/buildings_service";
+import { IoMdAddCircle } from "react-icons/io";
 
 const Wrapper = styled.div`
   padding: 3rem;
@@ -16,10 +17,13 @@ const Wrapper = styled.div`
 const AddBtn = styled.div`
   width: 18.75rem;
   height: 22rem;
-  border: 1px solid white;
+  border: 5px dotted white;
   padding: 0.5rem;
   border-radius: 2rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -45,7 +49,9 @@ function HomePage() {
         </StyledNavLink>
       ))}
       <StyledNavLink to="/create">
-        <AddBtn></AddBtn>
+        <AddBtn>
+          <IoMdAddCircle size="4rem" />
+        </AddBtn>
       </StyledNavLink>
     </Wrapper>
   );

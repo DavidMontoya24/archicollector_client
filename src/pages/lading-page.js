@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Button from "../components/Button";
+import { NavLink } from "react-router-dom";
 
 const Container = styled.div`
   height: 90%;
@@ -18,7 +19,9 @@ function LandingPage() {
         Your personal web app collector where you can see, post and edit some of
         the most beautiful architecture you like!
       </p>
-      <Button>Enter the site</Button>
+      <NavLink to="/home">
+        <Button>Enter the site</Button>
+      </NavLink>
     </Container>
   );
 }

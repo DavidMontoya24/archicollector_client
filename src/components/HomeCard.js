@@ -78,7 +78,7 @@ export default function HomeCard({ element }) {
     <Card>
       <Title>{name}</Title>
       <Image>
-        <img src={image} />
+        <img src={image.split(",")[0]} />
       </Image>
       <Desc>
         <DescContent>

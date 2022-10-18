@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { deleteProperty, showBuilding } from "../services/buildings_service";
 import { MdEdit, MdDelete } from "react-icons/md";
 import { Navigate } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
 
 const Container = styled.div`
   padding: 2rem 4rem;
@@ -33,7 +34,10 @@ const Header = styled.div`
 `;
 
 const MainImage = styled.div`
-  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${colors.dark};
   max-height: inherit;
   & img {
     object-fit: cover;
@@ -43,44 +47,49 @@ const MainImage = styled.div`
 `;
 
 const Content2 = styled.div`
-  height: 18rem;
-  border: 1px solid white;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background-color: ${colors.red};
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  line-height: 1.5rem;
+  text-align: center;
+  & h4 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  & p,
+  h5 {
+    margin: 0;
+    font-weight: 300;
+  }
+  & p {
+    text-align: justify;
+    max-height: 25rem;
+    overflow: overlay;
+  }
 `;
 
 const Content3 = styled.div`
   color: white;
-  background-color: blue;
+  background-color: ${colors.dark};
   display: flex;
 `;
 
 const Image2 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50%;
   & img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-`;
-
-const Content4 = styled.div`
-  height: 27rem;
-  background-color: ${colors.red};
-  transform: translateY(-12rem);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  line-height: 1.2rem;
-  text-align: center;
-  & h4 {
-    margin: 0;
-    font-weight: 500;
-  }
-  & p {
-    margin: 0;
-    font-weight: 300;
-    max-height: 13rem;
-    overflow: overlay;
   }
 `;
 
@@ -109,6 +118,7 @@ const Btn = styled.div`
 function ShowPage() {
   const [building, setBuilding] = useState("");
   const [goHome, setGoHome] = useState(false);
+  const [images, setImages] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -117,7 +127,15 @@ function ShowPage() {
         setBuilding(data);
       })
       .catch(console.log);
-  }, []);
+  }, [id]);
+  // console.log("building", building.image.split(", ")[1]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      const [image1, image2, image3] = building.image.split(", ");
+      setImages([image1, image2, image3]);
+    }, 3000);
+  }, [building]);
 
   const handleDelete = () => {
     deleteProperty(id)
@@ -144,35 +162,42 @@ function ShowPage() {
       </Header>
       <Wrapper>
         <MainImage>
-          <img src={building.image} alt="main_img" />
+          {!images && <Loader />}
+          {images && <img src={building.image.split(", ")[0]} alt="main_img" />}
         </MainImage>
-        <Content2></Content2>
-        <Content3>
-          <Image2>
-            <img src={building.image} alt="main_img" />
-          </Image2>
-          <Image2>
-            <img src={building.image} alt="main_img" />
-          </Image2>
-        </Content3>
-        <Content4>
+        <Content2>
           <div>
             <h4>Author</h4>
-            <p>{building.author}</p>
+            <h5>{building.author}</h5>
           </div>
           <div>
             <h4>Year</h4>
-            <p>{building.year}</p>
+            <h5>{building.year}</h5>
           </div>
           <div>
             <h4>Location</h4>
-            <p>{building.location}</p>
+            <h5>{building.location}</h5>
           </div>
           <div>
             <h4>Description</h4>
             <p>{building.description}</p>
           </div>
-        </Content4>
+        </Content2>
+
+        <Content3>
+          <Image2>
+            {!images && <Loader />}
+            {images && (
+              <img src={building.image.split(", ")[1]} alt="main_img" />
+            )}
+          </Image2>
+          <Image2>
+            {!images && <Loader />}
+            {images && (
+              <img src={building.image.split(", ")[2]} alt="main_img" />
+            )}
+          </Image2>
+        </Content3>
       </Wrapper>
     </Container>
   );

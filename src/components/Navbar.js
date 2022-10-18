@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { colors } from "../styles";
 import { AiFillHome } from "react-icons/ai";
+import { BiExit } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -30,14 +32,22 @@ const Content = styled.div`
 `;
 
 export default function Navbar() {
+  let { pathname } = useLocation();
   return (
-    <Container>
-      <Content>
-        <NavLink to="/home">
-          <AiFillHome color="white" size="2rem" />
-        </NavLink>
-        <h1>ArchiCollector</h1>
-      </Content>
-    </Container>
+    <>
+      {pathname !== "/" && (
+        <Container>
+          <Content>
+            <NavLink to="/home">
+              <AiFillHome color="white" size="2rem" />
+            </NavLink>
+            <h1>ArchiCollector</h1>
+            <NavLink to="/">
+              <BiExit color="white" size="2rem" />
+            </NavLink>
+          </Content>
+        </Container>
+      )}
+    </>
   );
 }
