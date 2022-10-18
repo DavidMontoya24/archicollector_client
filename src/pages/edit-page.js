@@ -26,7 +26,7 @@ const Title = styled.div`
 `;
 
 const Pill = styled.div`
-  width: 15rem;
+  width: 100%;
   height: 2rem;
   border-radius: 2rem;
   align-self: center;

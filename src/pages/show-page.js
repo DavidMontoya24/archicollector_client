@@ -9,8 +9,9 @@ import Loader from "../components/Loader/Loader";
 
 const Container = styled.div`
   padding: 2rem 4rem;
-  background-color: ${colors.darker};
+  background-color: ${colors.dark_transparency};
   border-radius: 3rem;
+  backdrop-filter: blur(10px);
 `;
 
 const Wrapper = styled.div`
@@ -52,6 +53,7 @@ const Content2 = styled.div`
   grid-row-start: 1;
   grid-row-end: 3;
   background-color: ${colors.red};
+  border-radius: 1rem;
   padding: 3rem 1rem;
   display: flex;
   flex-direction: column;
@@ -100,7 +102,7 @@ const StyledNavLink = styled(NavLink)`
 
 const BtnWrapper = styled.div`
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
 `;
 
 const Btn = styled.div`
@@ -111,8 +113,18 @@ const Btn = styled.div`
   border-radius: 0.5rem;
   gap: 0.5rem;
   width: fit-content;
-  background-color: ${colors.red};
+  background-color: ${colors.yellow};
+  color: ${colors.darker};
+  font-weight: 600;
   cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    background-color: ${colors.red};
+    color: ${colors.white};
+    & svg {
+      fill: ${colors.white};
+    }
+  }
 `;
 
 function ShowPage() {
@@ -150,12 +162,12 @@ function ShowPage() {
         <BtnWrapper>
           <StyledNavLink to={`/edit/${id}`}>
             <Btn>
-              <MdEdit color="white" size="1.5rem" /> EDIT
+              <MdEdit color={`${colors.darker}`} size="1.5rem" /> EDIT
             </Btn>
             {goHome && <Navigate to="/home" replace={true} />}
           </StyledNavLink>
           <Btn onClick={handleDelete}>
-            <MdDelete color="white" size="1.5rem" /> DELETE
+            <MdDelete color={`${colors.darker}`} size="1.5rem" /> DELETE
           </Btn>
         </BtnWrapper>
       </Header>
