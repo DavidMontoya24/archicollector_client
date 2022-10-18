@@ -6,6 +6,9 @@ import { colors, typography } from "../styles";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
+const defaultImgs =
+  "https://images.adsttc.com/media/images/5252/04fc/e8e4/4eff/0200/05d5/slideshow/_MG_4727.jpg?1381106925, https://images.adsttc.com/media/images/5252/043e/e8e4/4ecb/1700/056f/slideshow/_MG_4621.jpg?1381106734, https://images.adsttc.com/media/images/5252/04eb/e8e4/4eff/0200/05d4/slideshow/_MG_4718.jpg?1381106904";
+
 const Container = styled.div`
   padding: 2rem 4rem;
   background-color: ${colors.darker};
@@ -25,8 +28,21 @@ const Title = styled.div`
   align-self: center; ;
 `;
 
+const Pill = styled.div`
+  width: 15rem;
+  height: 2rem;
+  border-radius: 2rem;
+  align-self: center;
+  background-color: ${colors.red};
+  color: ${colors.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 function CreatePage() {
   const [newCreated, setNewCreated] = useState(false);
+  const [pill, setPill] = useState("Please provide all inputs");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,12 +52,21 @@ function CreatePage() {
       year: year.value,
       author: author.value,
       location: location.value,
+      description: description.value,
+      image: defaultImgs,
     };
     console.log("sending data:", data);
+
     createBuilding(data)
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
-    setNewCreated(true);
+      .then((data) => {
+        setNewCreated(true);
+        console.log(data);
+      })
+      .catch((err) => {
+        setNewCreated(false);
+        const error = JSON.parse(err.message);
+        setPill(error.data);
+      });
   };
 
   return (
@@ -49,6 +74,7 @@ function CreatePage() {
       {newCreated && <Navigate to="/home" replace={true} />}
       <Form onSubmit={handleSubmit}>
         <Title>Create your building</Title>
+        <Pill>{pill}</Pill>
         <Input
           name="name"
           placeholder="Ronchamp Chapel"
@@ -75,7 +101,9 @@ function CreatePage() {
           width="100%"
           label="description"
         />
-        <Button type="submit">Create</Button>
+        <Button type="submit" style={{ alignSelf: "center" }}>
+          Create
+        </Button>
       </Form>
     </Container>
   );

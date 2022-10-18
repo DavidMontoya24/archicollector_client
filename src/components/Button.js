@@ -4,13 +4,19 @@ import { fonts, typography } from "../styles/typography";
 
 const StyledButton = styled.button`
   border: none;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.5rem 1rem;
-  color: white;
-  background-color: blue;
+  color: ${colors.darker};
+  font-weight: 600;
+  background-color: ${colors.yellow};
   cursor: pointer;
   border-radius: 1rem;
   &:hover {
-    background-color: red;
+    background-color: ${colors.dark};
+    color: ${colors.white};
   }
 `;
 

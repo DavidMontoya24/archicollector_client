@@ -104,7 +104,9 @@ function EditPage() {
           onChange={handleChange}
           label="description"
         />
-        <Button type="submit">Edit</Button>
+        <Button type="submit" style={{ alignSelf: "center" }}>
+          Edit
+        </Button>
       </Form>
     </Container>
   );

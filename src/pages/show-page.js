@@ -128,13 +128,12 @@ function ShowPage() {
       })
       .catch(console.log);
   }, [id]);
-  // console.log("building", building.image.split(", ")[1]);
 
   useEffect(() => {
     setTimeout(() => {
       const [image1, image2, image3] = building.image.split(", ");
       setImages([image1, image2, image3]);
-    }, 3000);
+    }, 2500);
   }, [building]);
 
   const handleDelete = () => {

@@ -12,6 +12,9 @@ const Card = styled.div`
   border-radius: 2rem;
   margin: auto;
   position: relative;
+  &:hover {
+    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.6);
+  }
 `;
 
 const Image = styled.div`
@@ -77,9 +80,7 @@ export default function HomeCard({ element }) {
   return (
     <Card>
       <Title>{name}</Title>
-      <Image>
-        <img src={image.split(",")[0]} />
-      </Image>
+      <Image>{image && <img src={image.split(",")[0]} />}</Image>
       <Desc>
         <DescContent>
           <h4>{author}</h4>
