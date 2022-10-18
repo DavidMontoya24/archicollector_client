@@ -25,10 +25,23 @@ const Title = styled.div`
   align-self: center; ;
 `;
 
+const Pill = styled.div`
+  width: 15rem;
+  height: 2rem;
+  border-radius: 2rem;
+  align-self: center;
+  background-color: ${colors.red};
+  color: ${colors.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 function EditPage() {
   const [data, setData] = useState({});
   const { id } = useParams();
   const [goHome, setGoHome] = useState(false);
+  const [pill, setPill] = useState("Please provide all inputs");
 
   useEffect(() => {
     showBuilding(id)
@@ -54,9 +67,15 @@ function EditPage() {
     };
     console.log("sending data to edit:", fomrData);
     updateBuilding(data, id)
-      .then((data) => console.log(fomrData))
-      .catch((err) => console.error(err));
-    setGoHome(true);
+      .then((data) => {
+        setGoHome(true);
+        console.log(data);
+      })
+      .catch((err) => {
+        setGoHome(false);
+        const error = JSON.parse(err.message);
+        setPill(error.data);
+      });
   };
 
   return (
@@ -64,6 +83,7 @@ function EditPage() {
       {goHome && <Navigate to="/home" replace={true} />}
       <Form onSubmit={handleSubmit}>
         <Title>Edit your building</Title>
+        <Pill>{pill}</Pill>
         <Input
           name="name"
           placeholder="Ronchamp Chapel"
@@ -105,7 +125,7 @@ function EditPage() {
           label="description"
         />
         <Button type="submit" style={{ alignSelf: "center" }}>
-          Edit
+          Update
         </Button>
       </Form>
     </Container>
