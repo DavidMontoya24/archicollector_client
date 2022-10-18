@@ -41,7 +41,12 @@ function HomePage() {
     getBuildings().then((data) => {
       setList(data);
     });
-  }, [buildings]);
+    setTimeout(() => {
+      getBuildings().then((data) => {
+        setList(data);
+      });
+    }, 10);
+  }, []);
 
   return (
     <Wrapper>
