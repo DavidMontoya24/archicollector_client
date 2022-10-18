@@ -1,6 +1,5 @@
 import { colors } from "../styles/colors";
 import styled from "@emotion/styled";
-import { fonts, typography } from "../styles/typography";
 
 const StyledButton = styled.button`
   border: none;
