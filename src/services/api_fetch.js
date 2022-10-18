@@ -1,16 +1,8 @@
-import { BASE_URI, tokenKey } from "../config";
+import { BASE_URI } from "../config";
 export default async function apiFetch(
   endpoint,
   { method, headers, body } = {}
 ) {
-  // const token = JSON.parse(sessionStorage.getItem(tokenKey));
-  // if (token) {
-  //   headers = {
-  //     ...token,
-  //     ...headers,
-  //   };
-  // }
-
   if (body) {
     headers = {
       "Content-Type": "application/json",

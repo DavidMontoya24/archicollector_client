@@ -23,6 +23,12 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  & h1 {
+    color: ${colors.red};
+  }
+  & span {
+    color: ${colors.white};
+  }
 `;
 
 export default function Navbar() {
@@ -35,7 +41,9 @@ export default function Navbar() {
             <NavLink to="/home">
               <AiFillHome color="white" size="2rem" />
             </NavLink>
-            <h1>ArchiCollector</h1>
+            <h1>
+              Archi<span>Collection</span>
+            </h1>
             <NavLink to="/">
               <BiExit color="white" size="2rem" />
             </NavLink>

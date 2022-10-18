@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, typography } from "../styles";
-import { fonts } from "../styles/typography";
+import { colors } from "../styles";
 
 const StyledInputContainer = styled.div`
   display: flex;
@@ -8,7 +7,6 @@ const StyledInputContainer = styled.div`
   border-radius: 0.5rem;
   padding: 0.5rem;
   gap: 0.5rem;
-  /* border: 1px solid red; */
   width: ${({ width }) => width};
   background-color: ${colors.white};
 `;

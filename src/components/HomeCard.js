@@ -1,8 +1,5 @@
 import styled from "@emotion/styled";
-import { colors, typography } from "../styles";
-import { FaBuilding } from "react-icons/fa";
-import { MdEdit } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { colors } from "../styles";
 
 const Card = styled.div`
   width: 18.75rem;
@@ -65,35 +62,21 @@ const BtnWrapper = styled.div`
   gap: 0.75rem;
 `;
 
-const Btn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  height: 2rem;
-  width: 2rem;
-  background-color: ${colors.red};
-`;
-
 export default function HomeCard({ element }) {
-  const { id, name, image, author, year } = element;
+  const { name, image, author, year } = element;
   return (
     <Card>
       <Title>{name}</Title>
-      <Image>{image && <img src={image.split(",")[0]} />}</Image>
+      <Image>
+        {image && <img src={image.split(",")[0]} alt="homecard_image" />}
+      </Image>
       <Desc>
         <DescContent>
           <h4>{author}</h4>
           <h5>{year}</h5>
         </DescContent>
       </Desc>
-      <BtnWrapper>
-        {/* <NavLink to={`/edit/${element.id}`}>
-          <Btn>
-            <MdEdit color="white" size="1.5rem" />{" "}
-          </Btn>
-        </NavLink> */}
-      </BtnWrapper>
+      <BtnWrapper></BtnWrapper>
     </Card>
   );
 }
