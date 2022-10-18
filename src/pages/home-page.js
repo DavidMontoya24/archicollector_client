@@ -6,6 +6,7 @@ import { useBuildings } from "../context/buildings-context";
 import { useEffect, useState } from "react";
 import { getBuildings } from "../services/buildings_service";
 import { IoMdAddCircle } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const Wrapper = styled.div`
   padding: 3rem;
@@ -19,6 +20,7 @@ const AddBtn = styled.div`
   height: 22rem;
   border: 5px dotted white;
   padding: 0.5rem;
+  background-color: ${colors.dark_transparency};
   border-radius: 2rem;
   cursor: pointer;
   display: flex;
@@ -44,14 +46,22 @@ function HomePage() {
   return (
     <Wrapper>
       {list.map((elm) => (
-        <StyledNavLink to={`/home/${elm.id}`} key={elm.id}>
-          <HomeCard element={elm} key={elm.id} />
-        </StyledNavLink>
+        <motion.div
+          whileHover={{ scale: 0.85 }}
+          whileTap={{ scale: 1.1 }}
+          key={elm.id}
+        >
+          <StyledNavLink to={`/home/${elm.id}`} key={elm.id}>
+            <HomeCard element={elm} key={elm.id} />
+          </StyledNavLink>
+        </motion.div>
       ))}
       <StyledNavLink to="/create">
-        <AddBtn>
-          <IoMdAddCircle size="4rem" />
-        </AddBtn>
+        <motion.div whileHover={{ scale: 0.85 }} whileTap={{ scale: 1.1 }}>
+          <AddBtn>
+            <IoMdAddCircle size="4rem" />
+          </AddBtn>
+        </motion.div>
       </StyledNavLink>
     </Wrapper>
   );

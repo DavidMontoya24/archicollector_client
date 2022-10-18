@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { colors } from "./colors";
 import { fonts } from "./typography";
+import bgImg from "../assets/bg-image.png";
 
 export const reset = css`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
@@ -81,7 +82,9 @@ export const global = css`
     color: ${colors.white};
     font-family: ${fonts.primary};
     font-weight: 300;
-    background-image: linear-gradient(
+    background-image: url(${bgImg});
+    background-size: cover;
+    /* background-image: linear-gradient(
       to top,
       #18181d,
       #1c1c23,
@@ -95,6 +98,6 @@ export const global = css`
       #2a324f,
       #273354,
       #23345a
-    );
+    ); */
   }
 `;

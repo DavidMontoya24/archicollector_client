@@ -9,11 +9,12 @@ const Container = styled.div`
   width: 100%;
   height: 5rem;
   border-radius: 3rem;
-  background-color: ${colors.black};
+  background-color: ${colors.dark_transparency};
   color: ${colors.white};
   margin: 2rem 0;
   display: flex;
   align-items: center;
+  backdrop-filter: blur(10px);
 `;
 
 const Content = styled.div`
