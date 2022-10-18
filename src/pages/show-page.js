@@ -145,7 +145,7 @@ function ShowPage() {
     setTimeout(() => {
       const [image1, image2, image3] = building.image.split(", ");
       setImages([image1, image2, image3]);
-    }, 2500);
+    }, 1000);
   }, [building]);
 
   const handleDelete = () => {

@@ -2,4 +2,7 @@
 // export const BASE_URI = "http://localhost:8000";
 
 // This BASE_URI is using the Heroku Deployed Service
-export const BASE_URI = "https://archi-collector-api.herokuapp.com";
+// export const BASE_URI = "https://archi-collector-api.herokuapp.com";
+
+// This BASE_URI is using the Fly.io Deployed Service
+export const BASE_URI = "https://archi-collector-api.fly.dev";
